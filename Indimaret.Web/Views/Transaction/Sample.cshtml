@@ -1,0 +1,338 @@
+﻿
+@{
+    ViewBag.Title = "Transaksi";
+}
+
+<br />
+<br />
+<br />
+
+<h2>Transaksi Penjualan</h2>
+<form id="idFrmTransaction">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <label for="idInpNoFaktur">No Faktur</label>
+                        </td>
+                        <td>
+                            <input type="text" name="NoFaktur" class="form-control" id="idInpNoFaktur" placeholder="No Faktur" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="idInpTglPenjualan">Tanggal Penjualan</label>
+                        </td>
+                        <td>
+                            <input type="text" name="TransactionDate" class="form-control" id="idInpTglPenjualan" placeholder="Tanggal Penjualan" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Lihat Data Barang</button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="text" class="form-control" id="idInpPencarian" placeholder="Search" />
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Data Barang</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td>Nama</td>
+                                            <td>Harga</td>
+                                            <td>Aksi</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="idTblBodyBarang"></tbody>
+                                </table>
+
+                            </div>
+                            @*<div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- End Of Modal -->
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Nama</td>
+                                <td>Jumlah</td>
+                                <td>Sub Total</td>
+                                <td>Aksi</td>
+                            </tr>
+                        </thead>
+                        <tbody id="idTblBodyTransaction"></tbody>
+                    </table>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+                <div>
+                    <table class="table table-responsive">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td width="300">
+                                <input type="text" name="Total" class="form-control" readonly id="idInpTotalHarga" placeholder="Total Harga" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td width="300">
+                                <input type="text" class="form-control" id="idInpBayar" placeholder="Bayar" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td width="300">
+                                <input type="text" name="CashReturn" class="form-control" readonly id="idInpSisa" placeholder="Sisa" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td width="300">
+                                <button type="button" class="btn btn-success pull-right" id="idBtnSubmitTransaction">Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+<script>
+    $(document).ready(function () {
+
+        $("#idInpTglPenjualan").datepicker({
+            minDate: 0,
+            dateFormat: "yy-mm-dd"
+        }).datepicker("setDate", new Date());
+
+        $('#idInpNoFaktur').mask('NFK-0000');
+
+        var vStrHtml = '';
+        var vCtr = 0;
+        var vTkp = true;
+
+        $.ajax({
+            url: '/Transaction/Tampil',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) {
+                    vStrHtml = vStrHtml + '<tr>' +
+                        '<td>' + d.NamaBarang + '</td>' +
+                        '<td>' + d.Harga + '</td>' +
+                        //JSON.stringify= memberi petik nama, age, city, misal:awalnya var obj = { name: "John", age: 30, city: "New York" };, jadi {"name":"John","age":30,"city":"New York"}
+                        '<td><button type = "button" class="btn btn-primary clBtnTambahBarang" dataBarang=\' ' + JSON.stringify(d) + ' \' >+</buttton></td>' +
+                        '</tr>';
+                });
+
+                $('#idTblBodyBarang').append(vStrHtml);
+
+                var vJmlBarang = 0;
+
+                $('.clBtnTambahBarang').click(function () {
+                    debugger;
+
+                    var vDataBarangDetail = JSON.parse($(this).attr('dataBarang'));
+                    var vHargaBarang = vDataBarangDetail.Harga;
+                    var vStrHtmlTransaksi = '';
+                    var sum = 0;
+
+                    debugger;
+
+                    $('.clNmBarang').each(function (i, d) {
+                        debugger;
+                        if (vDataBarangDetail.ID == parseInt($(this).attr('dataID'))) {
+                            vTkp = false;
+
+                            vJmlBarang = $(this).parent().parent().find('td input:text.clJmlBarang').val();
+                            vJmlBarang++;
+                            $(this).parent().parent().find('td input:text.clJmlBarang').val(vJmlBarang);
+                            vHargaBarang = vJmlBarang * vHargaBarang;
+                            $(this).parent().parent().find('td input:text.clHargaBarang').val(vHargaBarang);
+                            debugger;
+                        }
+                    });
+
+
+                    if (vTkp == false) {
+                        debugger;
+
+                        vCtr = 1;
+                        vTkp = true;
+                    }
+                    else {
+                        debugger;
+                        vCtr = 0;
+                    }
+
+                    if (vCtr == 0) {
+                        debugger;
+                        vJmlBarang = 1;
+
+                        vStrHtmlTransaksi = vStrHtmlTransaksi + '<tr>' +
+                            '<td>' +
+                            '<input type="text" class="clNmBarang" dataID="' + vDataBarangDetail.ID + '" value="' + vDataBarangDetail.NamaBarang + '" />' +
+                            '<input type="hidden" name="TrxDetail[0].BarangID" class="clIdBarang" value="' + vDataBarangDetail.ID + '" />' +
+                            '</td>' +
+
+                            '<td>' +
+                            '<input type="text" class="clJmlBarang" name="TrxDetail[0].Quantity" value="' + vJmlBarang + '" />' +
+                            '</td>' +
+
+                            '<td>'+
+                            '<input type="text" class="clHargaBarang" value="' + vHargaBarang + '" />' +
+                            '</td>' +
+
+                            '<td>' +
+                            '<button type="button" class="btn btn-danger clBtnDeleteBarang" >-</button>' +
+                            '</td>' +
+
+                            '</tr>';
+                        $('#idTblBodyTransaction').append(vStrHtmlTransaksi);
+                        reIndexTable();
+                        reIndexTableQuantity();
+                    }
+
+
+                    $('.clBtnDeleteBarang').click(function () {
+                        var vAmbilHarga = $(this).parent().parent().find('td input:text.clHargaBarang').val();
+                        $(this).parent().parent().remove();
+                        sum -= vAmbilHarga;
+                        $("#idInpTotalHarga").val(sum);
+                        debugger;
+                    });
+
+                    $('.clHargaBarang').each(function (i, d) {
+                        debugger;
+                        sum += parseInt($(this).val());
+                        $("#idInpTotalHarga").val(sum);
+                    })
+                });
+            },
+            error: function (mdl) {
+                debugger;
+            }
+        });
+
+
+        $('#idInpBayar').keypress(function (event) {
+            if (event.which == 13 || event.keyCode == 13) {
+                debugger;
+                var total = parseInt($('#idInpTotalHarga').val());
+                var bayar = parseInt($('#idInpBayar').val());
+                var kembali = bayar - total;
+                if (bayar >= total) {
+                    $('#idInpSisa').val(kembali);
+                }
+                else {
+                    alert("Uang Bayar Anda Kurang");
+                    $('#idInpSisa').val('Uang Kurang');
+                }
+            }
+        });
+
+        $('#idBtnSubmitTransaction').click(function () {
+            debugger;
+            var vDataTransaction = $('#idFrmTransaction').serialize();
+
+            $.ajax({
+                url: '/Transaction/SaveTransaction',
+                data: vDataTransaction,
+                method: 'Post',
+                success: function (mdl) {
+                    debugger;
+                    if (mdl.hasil=="Berhasil") {
+                        alert("Data berhasil disimpan");
+
+                        $('#idMdlCreateBarang').close;
+                        location.reload();
+                    }
+                    else {
+                        alert("Data gagal disimpan");
+                    }
+                },
+                error: function (mdl) {
+                    debugger;
+                }
+            })
+        });
+    });
+
+
+    function reIndexTable() {
+        var rowCount = $('#idTblBodyTransaction tr').length;
+
+        if (rowCount > 0) {
+
+            var idx = 0;
+
+            $.each($("#idTblBodyTransaction").find("tr"), function (i, val) {
+
+                var vIdBarang = $(this).find(":input[name*='.BarangID']");
+                $(vIdBarang).attr("name", vIdBarang.attr("name").replace(/\[.*?]\s?/g, "[" + idx + "]"));
+
+                idx += 1;
+
+            });
+        }
+    }
+
+
+    function reIndexTableQuantity() {
+        var rowCount = $('#idTblBodyTransaction tr').length;
+
+        if (rowCount > 0) {
+
+            var idx = 0;
+
+            $.each($("#idTblBodyTransaction").find("tr"), function (i, val) {
+
+                var vQuantityBarang = $(this).find(":input[name*='.Quantity']");
+                $(vQuantityBarang).attr("name", vQuantityBarang.attr("name").replace(/\[.*?]\s?/g, "[" + idx + "]"));
+
+                idx += 1;
+            })
+        }
+    }
+
+</script>
+

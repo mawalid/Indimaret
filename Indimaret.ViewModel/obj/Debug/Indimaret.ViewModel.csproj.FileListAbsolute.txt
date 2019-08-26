@@ -1,0 +1,10 @@
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\bin\Debug\Indimaret.ViewModel.dll.config
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\bin\Debug\Indimaret.ViewModel.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\bin\Debug\Indimaret.ViewModel.pdb
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\bin\Debug\EntityFramework.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\bin\Debug\EntityFramework.xml
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\obj\Debug\Indimaret.ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\obj\Debug\Indimaret.ViewModel.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.ViewModel\obj\Debug\Indimaret.ViewModel.pdb

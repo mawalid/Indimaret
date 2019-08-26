@@ -1,0 +1,10 @@
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\bin\Debug\Indimaret.Model.dll.config
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\bin\Debug\Indimaret.Model.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\bin\Debug\Indimaret.Model.pdb
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\bin\Debug\EntityFramework.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\bin\Debug\EntityFramework.xml
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\obj\Debug\Indimaret.Model.csprojResolveAssemblyReference.cache
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\obj\Debug\Indimaret.Model.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Model\obj\Debug\Indimaret.Model.pdb

@@ -1,0 +1,14 @@
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\Indimaret.Repo.dll.config
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\Indimaret.Repo.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\Indimaret.Repo.pdb
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\EntityFramework.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\Indimaret.Model.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\Indimaret.Model.pdb
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\EntityFramework.xml
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\obj\Debug\Indimaret.Repo.csprojResolveAssemblyReference.cache
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\obj\Debug\Indimaret.Repo.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\obj\Debug\Indimaret.Repo.pdb
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\Indimaret.ViewModel.dll
+C:\Users\PC\Downloads\MiniProject\sIndimaret\sIndimaret\Indimaret.Repo\bin\Debug\Indimaret.ViewModel.pdb
